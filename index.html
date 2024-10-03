@@ -2,382 +2,492 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Jable</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <title>Box</title>
     <style>
       * {
-        padding: 0;
-        margin: 0;
+        padding: 0%;
+        margin: 0%;
         box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
       }
-      body {
-        transition: all 300ms;
+
+      /* Form Style */
+      .formcontainer {
+        position: fixed;
         height: 100vh;
         width: 100vw;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-      }
-      .controls {
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-        border-radius: 12px;
-        height: 630px;
-        width: 300px;
-        padding: 11px;
-      }
-      form {
-        flex-direction: column;
-        gap: 20px;
-        padding: 10px;
-
+        padding: 1.2rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 1rem;
+        background-color: rgba(198, 198, 198, 0.54);
+        -webkit-backdrop-filter: blur(1px);
+        backdrop-filter: blur(1px);
       }
-      .shapes {
-        font-family: Arial, Helvetica, sans-serif;
+
+      .formcontainer #form {
+        position: relative;
+        background-color: slategrey;
+        height: 72%;
+        width: 81%;
+        border-radius: 12px;
+        padding: 1rem;
         display: flex;
         flex-direction: column;
-        width: 100%;
-        gap: 12px;
-        padding: 12px;
-      }
-      .shapes button:hover {
-        transition: all 300ms;
-        background-color: black;
-        color: whitesmoke;
+        justify-content: start;
+        align-items: center;
+        gap: 0.9rem;
+        box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px,
+          rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px,
+          rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+        background-color: rgba(300, 300, 300, 0.9);
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
       }
 
-      .shapes .wrapper {
+      .com-details,
+      .other-details {
+        padding: 0.9rem;
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
-      }
-      .shapes span {
-        display: flex;
+        justify-content: flex-start;
         align-items: center;
-        gap: 12px;
-        color: black;
-        font-weight: 600;
-      }
-      .shapes span i {
-        box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-        padding: 9px;
-        background-color: black;
-        color: yellowgreen;
-        border-radius: 9px;
-      }
-      .wrapper button {
-        background-color: white;
-        border-radius: 3px;
-      }
-      .f-wrapper {
-        color: grey;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-family: Arial, Helvetica, sans-serif;
-      }
-      .f-wrapper #title {
-        width: 80%;
+        gap: 1rem;
+
+        background-color: transparent;
       }
 
-      input,
+      .per-details {
+        padding: 0.9rem;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 0%;
+        background-color: transparent;
+      }
+
+      .per-details .wrapper-1 {
+        padding: 0.9rem;
+        width: 100%;
+        gap: 0.9rem;
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+      }
+
+      .per-details .wrapper-2 {
+        padding: 0.9rem;
+        width: 100%;
+        gap: 0.9rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        background-color: transparent;
+      }
+
+      .type {
+        width: 100%;
+        display: flex;
+        gap: 0.9rem;
+        align-items: center;
+        background-color: transparent;
+      }
+
       label {
-        outline: none;
-        border-top: none;
-        border-left: none;
-        border-right: none;
-        border-radius: 3px;
-        font-size: larger;
+        opacity: 0.9;
         font-weight: 600;
       }
-      button {
-        padding: 10px;
-        border-radius: 12px;
-        box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-        font-size: medium;
-        font-weight: 600;
-        border: 1px dotted grey;
-      }
-      ::placeholder {
-        color: rgba(128, 128, 128, 0.393);
-        font-family: Arial, Helvetica, sans-serif;
-        font-weight: 600;
+      input {
+        border-bottom: 1px solid grey;
+        background-color: transparent;
       }
 
-      .container {
-        position: relative;
-        transition: all 300ms;
-        border-radius: 12px;
-        height: 630px;
+      /* CSS */
+      .button-81 {
+        background-color: #fff;
+        border: 1px solid grey;
+        border-radius: 1.5rem;
+        box-sizing: border-box;
+        color: #0d172a;
+        cursor: pointer;
+        display: inline-block;
+        font-family: "Basier circle", -apple-system, system-ui, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+        font-size: 1.1rem;
+        font-weight: 600;
+        line-height: 1;
+        padding: 1rem 1.6rem;
+        text-align: center;
+        text-decoration: none #0d172a solid;
+        text-decoration-thickness: auto;
+        transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
         display: flex;
-        flex-wrap: wrap;
-        overflow: auto;
-        width: 1200px;
-
-        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        align-items: center;
+        justify-content: center;
+        gap: 0.9rem;
       }
-      #fone {
+
+      .button-81:hover {
+        background-color: #1e293b;
+        color: #fff;
+      }
+      table tr {
+        text-transform: capitalize;
+      }
+      table th{
+        text-transform: capitalize;
+      }
+      @media (min-width: 768px) {
+        .button-81 {
+          font-size: 1.125rem;
+          padding: 1rem 2rem;
+        }
+      }
+      /* ====================== */
+      .add-new-row {
+        margin: 30px;
+        border: 1px solid black;
+      }
+
+      #details-form {
+        position: fixed;
+        z-index: 10;
+      }
+
+      #details-form.form-hidden {
+        display: none;
+      }
+
+      #details-form.form-show {
+        display: block;
+      }
+      .formc {
+        display: none;
+      }
+      #add {
+        margin: 10px auto;
+        border: 1px solid grey;
+      }
+      .cls-btn {
+        align-self: flex-end;
+        font-size: 1rem;
         position: absolute;
-        right: 0%;
-        top: 0%;
-        width: 10%;
-        display: flex;
-        flex-direction: row;
-      }
-      #fone input {
-        height: 40px;
-        padding: 1px;
+        right: 1%;
+        top: 3%;
+        padding: 3px 9px;
+        background-color: red;
+        color: white;
+        border-radius: 50%;
+        font-weight: 600;
       }
     </style>
   </head>
   <body>
-    <div class="controls">
-      <form>
-        <input type="number" name="height" placeholder="Height" />
-        <input type="number" name="width" placeholder="Width" />
-        <input type="text" name="border" placeholder="Border" />
-        <input type="number" name="radius" placeholder="Border-Radius" />
-        <input type="margin" name="margin" placeholder="Margin" />
-        <div class="f-wrapper">
-          <label>Background-Color</label>
-          <input type="color" name="color" />
-        </div>
-        <div class="f-wrapper">
-          <input type="text" name="title" placeholder="Title" id="title" />
-          <input type="color" name="txtcolor" />
+    <div class="formcontainer formc">
+      <form id="form">
+        <h1 style="font-size: 1.8rem; font-weight: 600">Enter Details</h1>
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true" class="cls-btn">&times;</span>
+        </button>
+        <div class="com-details">
+          <label>COMPANY NAME</label>
+          <input
+            type="text"
+            name="cname"
+            placeholder="Enter Company Name"
+            required
+          />
+          <label>USER ID</label>
+          <input type="text" name="ui" placeholder="Enter User Id" required />
         </div>
 
-        <button><i class="fa-solid fa-plus"></i></button>
+        <div class="per-details">
+          <div class="wrapper-1">
+            <label>PROFILE</label>
+            <input type="text" name="imageURL" placeholder="Enter Image Link" />
+            <label>NAME</label>
+            <input
+              type="text"
+              name="fname"
+              placeholder="Enter Full Name"
+              required
+            />
+            <label>EMAIL ADDRESS</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter Email Address"
+              required
+            />
+          </div>
+
+          <div class="wrapper-2">
+            <div class="type">
+              <span style="font-weight: 600">SELECT TYPE</span>
+              <input type="radio" id="customer" name="type" value="customer" />
+              <label for="customer">Customer</label><br />
+              <input type="radio" id="partner" name="type" value="partner" />
+              <label for="partner">Partner</label><br />
+              <input type="radio" id="reseller" name="type" value="reseller" />
+              <label for="reseller">Reseller</label>
+            </div>
+
+            <label>INDUSTRY TYPE</label>
+            <input
+              type="text"
+              name="itype"
+              placeholder="Enter Industry Type"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="other-details">
+          <label>JOIN DATE</label>
+          <input type="date" name="date" required />
+
+          <label>BUDGET</label>
+          <input
+            type="number"
+            name="budget"
+            placeholder="Enter Budget Amount"
+            required
+          />
+          <label>COUNTRY</label>
+          <input
+            type="text"
+            name="country"
+            placeholder="Enter Country Name"
+            required
+          />
+          <br />
+
+          <label for="status">SELECT STATUS : </label>
+          <select id="status" name="s" form="form">
+            <option value="Active">Active</option>
+            <option value="Cancel">Cancel</option>
+            <option value="Pending">Pending</option>
+          </select>
+        </div>
+
+        <button class="button-81" type="button" role="button" id="submit">
+          ADD
+        </button>
       </form>
-      <div class="shapes">
-        <span>Shapes <i class="fa-solid fa-shapes"></i></span>
-        <div class="wrapper">
-          <button onclick="mySquare()" id="square">
-            <i class="fa-solid fa-square"></i>
-          </button>
-          <button onclick="myCircle()" id="circle">
-            <i class="fa-solid fa-circle"></i>
-          </button>
-          <button onclick="myTriangle()" id="triangle">
-            <i class="fa-solid fa-play fa-rotate-270"></i>
-          </button>
-          <button onclick="myRhombus()" id="rhombus">
-            <i class="fa-solid fa-diamond"></i>
-          </button>
-          <button onclick="myStar()" id="star">
-            <i class="fa-solid fa-star"></i>
-          </button>
-          <button onclick="myEllipse()" id="ellipse">
-            <i class="fa-solid fa-location-pin"></i>
-          </button>
+    </div>
+
+    <button class="button-81" type="button" role="button" id="add">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="27"
+        height="27"
+        fill="currentColor"
+        class="bi bi-plus-circle-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"
+        />
+      </svg>
+      New
+    </button>
+    <div class="flex flex-col">
+      <div class="overflow-x-auto pb-4">
+        <div class="min-w-full inline-block align-middle">
+          <div class="overflow-hidden border rounded-lg border-gray-300">
+            <table class="table-auto min-w-full rounded-xl" id="tab">
+              <thead>
+                <tr class="bg-gray-50">
+                  <th class="">
+                    <div class="flex items-center py-5 px-5">
+                      <input
+                        type="checkbox"
+                        value=""
+                        class="w-5 h-5 appearance-none border border-gray-300 rounded-md mr-2 hover:border-indigo-500 hover:bg-indigo-100 checked:bg-no-repeat checked:bg-center checked:border-indigo-500 checked:bg-indigo-100"
+                      />
+                    </div>
+                  </th>
+                  <th
+                    scope="col"
+                    class="p-5 text-left whitespace-nowrap text-sm leading-6 font-semibold text-gray-900 capitalize"
+                  >
+                    COMPANY
+                  </th>
+                  <th
+                    scope="col"
+                    class="p-5 text-left whitespace-nowrap text-sm leading-6 font-semibold text-gray-900 capitalize"
+                  >
+                    USER ID
+                  </th>
+                  <th
+                    scope="col"
+                    class="p-5 text-left whitespace-nowrap text-sm leading-6 font-semibold text-gray-900 capitalize min-w-[150px]"
+                  >
+                    FULL NAME &amp; EMAIL
+                  </th>
+                  <th
+                    scope="col"
+                    class="p-5 text-left whitespace-nowrap text-sm leading-6 font-semibold text-gray-900 capitalize"
+                  >
+                    TYPE
+                  </th>
+                  <th
+                    scope="col"
+                    class="p-5 text-left whitespace-nowrap text-sm leading-6 font-semibold text-gray-900 capitalize"
+                  >
+                    INDUSTRY TYPE
+                  </th>
+                  <th
+                    scope="col"
+                    class="p-5 text-left whitespace-nowrap text-sm leading-6 font-semibold text-gray-900 capitalize"
+                  >
+                    JOIN DATE
+                  </th>
+                  <th
+                    scope="col"
+                    class="p-5 text-left whitespace-nowrap text-sm leading-6 font-semibold text-gray-900 capitalize"
+                  >
+                    BUDGET
+                  </th>
+                  <th
+                    scope="col"
+                    class="p-5 text-left whitespace-nowrap text-sm leading-6 font-semibold text-gray-900 capitalize"
+                  >
+                    COUNTRY
+                  </th>
+                  <th
+                    scope="col"
+                    class="p-5 text-left whitespace-nowrap text-sm leading-6 font-semibold text-gray-900 capitalize"
+                  >
+                    STATUS
+                  </th>
+                  <th
+                    scope="col"
+                    class="p-5 text-left whitespace-nowrap text-sm leading-6 font-semibold text-gray-900 capitalize"
+                  >
+                    ACTIONS
+                  </th>
+                </tr>
+              </thead>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-    <div class="container">
-      <form id="fone">
-        <input type="color" name="bgclr" />
-        <button id="bgbtn"><i class="fa-solid fa-paintbrush"></i></button>
-      </form>
-    </div>
-
-    <!--  -->
-
-    <!--  -->
 
     <script>
-      h = document.getElementsByName("height")[0];
-      w = document.getElementsByName("width")[0];
-      b = document.getElementsByName("border")[0];
-      r = document.getElementsByName("radius")[0];
-      c = document.getElementsByName("color")[0];
-      m = document.getElementsByName("margin")[0];
-      t = document.getElementsByName("title")[0];
-      tc = document.getElementsByName("txtcolor")[0];
-      create = document.getElementsByTagName("button")[0];
-      con = document.getElementsByClassName("container")[0];
+      const tab = document.querySelector("#tab");
+      console.log(tab);
 
-      bgclr = document.getElementsByName("bgclr")[0];
-      btn = document.getElementById("bgbtn");
+      cname = document.getElementsByName("cname")[0];
+      ui = document.getElementsByName("ui")[0];
+      fname = document.getElementsByName("fname")[0];
+      imageURL = document.getElementsByName("imageURL")[0];
+      email = document.getElementsByName("email")[0];
+      type = document.getElementsByName("type")[0];
+      itype = document.getElementsByName("itype")[0];
+      date = document.getElementsByName("date")[0];
+      budget = document.getElementsByName("budget")[0];
+      country = document.getElementsByName("country")[0];
+      s = document.getElementsByName("s")[0];
+
+      btn = document.getElementById("submit");
+
+      form = document.getElementById("add");
+      oform = document.getElementsByClassName("formcontainer")[0];
+
+      close = document.getElementsByClassName("close")[0];
+
+      close.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        oform.classList.add("formc");
+      });
+
+      form.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        oform.classList.remove("formc");
+      });
 
       btn.addEventListener("click", (e) => {
         e.preventDefault();
 
-        con.style.cssText = `background-color:${bgclr.value};`;
+        tr = document.createElement("tr");
+
+        tr.classList.add(
+          "bg-white",
+          "transition-all",
+          "duration-500",
+          "hover:bg-gray-50"
+        );
+
+        tr.innerHTML = `<td class="">
+                                  <div class="flex items-center py-5 px-5 ">
+                                      <input type="checkbox" value="" class="w-5 h-5 appearance-none border border-gray-300  rounded-md mr-2 hover:border-indigo-500 hover:bg-indigo-100 checked:bg-no-repeat checked:bg-center checked:border-indigo-500 checked:bg-indigo-100">
+                                  </div>
+                              </td>
+                              <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900 "> ${cname.value}</td>
+                              <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900"> ${ui.value}</td>
+                              <td class=" px-5 py-3">
+                                  <div class=" flex items-center gap-3">
+                                      <img src="${imageURL.value}" alt="Floyd image" class="w-12 h-12 rounded-full object-cover ">
+                                      <div class="data">
+                                          <p class="font-normal text-sm text-gray-900">${fname.value}</p>
+                                          <p class="font-normal text-xs leading-5 text-gray-400"> ${email.value} </p>
+                                      </div>
+                                  </div>
+                              </td>
+                              <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900"> ${type.value}</td>
+                              <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900"> ${itype.value}</td>
+                              <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900"> ${date.value}</td>
+                              <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900"> ${budget.value}</td>
+                              <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">${country.value} </td>
+                              <td class="p-5 whitespace-nowrap text-sm leading-6 font-medium text-gray-900">
+                                  <div class="py-1.5 px-2.5 bg-emerald-50 rounded-full flex justify-center w-20 items-center gap-1">
+                                      <svg width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <circle cx="2.5" cy="3" r="2.5" fill="#059669"></circle>
+                                      </svg>
+                                      <span class="font-medium text-xs text-emerald-600 ">${s.value}</span>
+                                  </div>
+                              </td>
+                              <td class="flex p-5 items-center gap-0.5">
+                                  <button class="p-2  rounded-full bg-white group transition-all duration-500 hover:bg-indigo-600 hover:text-white flex item-center">
+                                    <i class="bi bi-pencil-square cursor-pointer"></i>
+                                  </button>
+                                  <button class="p-2 rounded-full bg-white group transition-all duration-500 hover:bg-red-600 flex item-center hover:text-white">
+                                    <i class="bi bi-trash-fill"></i>
+                                  </button>
+                                  <button class="p-2 rounded-full bg-white group transition-all duration-500 hover:bg-black flex item-center hover:text-white">
+                                      <i class="bi bi-three-dots-vertical"></i>
+                                  </button>
+                              </td>`;
+
+        tab.append(tr);
       });
-
-      create.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        box = document.createElement("div");
-        box.style.cssText = `
-                    height: ${h.value}px;
-                       width:  ${w.value}px;
-                       background-color:  ${c.value};
-                       border-radius:  ${r.value}px;
-                       border:${b.value};
-                        margin:${m.value};
-                        display:flex;
-                        justify-content:center;
-                        align-items:center;
-                        flex-wrap:wrap;
-                        overflow:auto;
-                        color:${tc.value};
-                        font-size:1.8em;
-                        text-transform: capitalize;
-                       `;
-
-        box.innerText = t.value;
-        box.classList.add("box1");
-
-        con.appendChild(box);
-      });
-
-      square.onclick = mySquare;
-
-      function mySquare() {
-        b1 = con.children[1];
-        console.log(b1);
-
-        b1.style.cssText = `height: ${h.value}px;
-                       width:  ${w.value}px;
-                       background-color:  ${c.value};
-                       
-                       
-                        margin:${m.value};
-                        display:flex;
-                        justify-content:center;
-                        align-items:center;
-                        flex-wrap:wrap;
-                        overflow:auto;
-                        color:${tc.value};
-                        text-transform: capitalize;
-                        font-size:1.8em;
-                        
-                       `;
-      }
-
-      circle.onclick = myCircle;
-
-      function myCircle() {
-        b1 = con.children[1];
-        console.log(b1);
-
-        b1.style.cssText = `height: ${h.value}px;
-                       width:  ${w.value}px;
-                       background-color:  ${c.value};
-                        
-                        margin:${m.value};
-                        display:flex;
-                        justify-content:center;
-                        align-items:center;
-                        flex-wrap:wrap;
-                        overflow:auto;
-                        font-size:1.8em;
-                        color:${tc.value};
-                        text-transform: capitalize;
-                        clip-path: circle(50% at 50% 50%);
-                       `;
-      }
-      triangle.onclick = myTriangle;
-
-      function myTriangle() {
-        b1 = con.children[1];
-        console.log(b1);
-
-        b1.style.cssText = `height: ${h.value}px;
-                       width:  ${w.value}px;
-                       background-color:  ${c.value};
-                        
-                        margin:${m.value};
-                        display:flex;
-                        justify-content:center;
-                        align-items:center;
-                        flex-wrap:wrap;
-                        overflow:auto;
-                        font-size:1.8em;
-                        color:${tc.value};
-                        text-transform: capitalize;
-                        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-                       `;
-      }
-      rhombus.onclick = myRhombus;
-
-      function myRhombus() {
-        b1 = con.children[1];
-        console.log(b1);
-
-        b1.style.cssText = `height: ${h.value}px;
-                       width:  ${w.value}px;
-                       background-color:  ${c.value};
-                        
-                        margin:${m.value};
-                        display:flex;
-                        justify-content:center;
-                        align-items:center;
-                        flex-wrap:wrap;
-                        overflow:auto;
-                        color:${tc.value};
-                        font-size:1.8em;
-                        text-transform: capitalize;
-                        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-                       `;
-      }
-      star.onclick = myStar;
-
-      function myStar() {
-        b1 = con.children[1];
-        console.log(b1);
-
-        b1.style.cssText = `height: ${h.value}px;
-                       width:  ${w.value}px;
-                       background-color:  ${c.value};
-                        
-                        margin:${m.value};
-                        display:flex;
-                        justify-content:center;
-                        align-items:center;
-                        flex-wrap:wrap;
-                        overflow:auto;
-                        color:${tc.value};
-                        font-size:1.8em;
-                        text-transform: capitalize;
-                        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-                       `;
-      }
-
-      ellipse.onclick = myEllipse;
-
-      function myEllipse() {
-        b1 = con.children[1];
-        console.log(b1);
-
-        b1.style.cssText = `height: ${h.value}px;
-                       width:  ${w.value}px;
-                       background-color:  ${c.value};
-                        
-                        margin:${m.value};
-                        display:flex;
-                        justify-content:center;
-                        align-items:center;
-                        flex-wrap:wrap;
-                        overflow:auto;
-                        color:${tc.value};
-                        font-size:1.8em;
-                        text-transform: capitalize;
-                      clip-path: ellipse(25% 40% at 50% 50%);
-                       `;
-      }
     </script>
   </body>
 </html>

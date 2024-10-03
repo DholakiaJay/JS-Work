@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Box</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        transition: all 300ms;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+      }
+      .controls {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        border-radius: 12px;
+        height: 630px;
+        width: 300px;
+        padding: 11px;
+      }
+      form {
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .shapes {
+        font-family: Arial, Helvetica, sans-serif;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+        padding: 12px;
+      }
+      .shapes button:hover {
+        transition: all 300ms;
+        background-color: black;
+        color: whitesmoke;
+      }
+
+      .shapes .wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .shapes span {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: black;
+        font-weight: 600;
+      }
+      .shapes span i {
+        box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+        padding: 9px;
+        background-color: black;
+        color: yellowgreen;
+        border-radius: 9px;
+      }
+      .wrapper button {
+        background-color: white;
+        border-radius: 3px;
+      }
+      .f-wrapper {
+        color: grey;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .f-wrapper #title {
+        width: 80%;
+      }
+
+      input,
+      label {
+        outline: none;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-radius: 3px;
+        font-size: larger;
+        font-weight: 600;
+      }
+      button {
+        padding: 10px;
+        border-radius: 12px;
+        box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+        font-size: medium;
+        font-weight: 600;
+        border: 1px dotted grey;
+      }
+      ::placeholder {
+        color: rgba(128, 128, 128, 0.393);
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 600;
+      }
+
+      .container {
+        position: relative;
+        transition: all 300ms;
+        border-radius: 12px;
+        height: 630px;
+        display: flex;
+        flex-wrap: wrap;
+        overflow: auto;
+        width: 1200px;
+
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      }
+      #fone {
+        position: absolute;
+        right: 0%;
+        top: 0%;
+        width: 10%;
+        display: flex;
+        flex-direction: row;
+      }
+      #fone input {
+        height: 40px;
+        padding: 1px;
+      }
+      
+    </style>
+  </head>
+  <body>
+    
+    <div class="controls">
+      <form>
+        <input type="number" name="height" placeholder="Height" />
+        <input type="number" name="width" placeholder="Width" />
+        <input type="text" name="border" placeholder="Border" />
+        <input type="number" name="radius" placeholder="Border-Radius" />
+        <input type="margin" name="margin" placeholder="Margin" />
+        <div class="f-wrapper">
+          <label>Background-Color</label>
+          <input type="color" name="color" />
+        </div>
+        <div class="f-wrapper">
+          <input type="text" name="title" placeholder="Title" id="title" />
+          <input type="color" name="txtcolor" />
+        </div>
+
+        <button><i class="fa-solid fa-plus"></i></button>
+      </form>
+      <div class="shapes">
+        <span>Shapes <i class="fa-solid fa-shapes"></i></span>
+        <div class="wrapper">
+          <button onclick="mySquare()" id="square">
+            <i class="fa-solid fa-square"></i>
+          </button>
+          <button onclick="myCircle()" id="circle">
+            <i class="fa-solid fa-circle"></i>
+          </button>
+          <button onclick="myTriangle()" id="triangle">
+            <i class="fa-solid fa-play fa-rotate-270"></i>
+          </button>
+          <button onclick="myRhombus()" id="rhombus">
+            <i class="fa-solid fa-diamond"></i>
+          </button>
+          <button onclick="myStar()" id="star">
+            <i class="fa-solid fa-star"></i>
+          </button>
+          <button onclick="myEllipse()" id="ellipse">
+            <i class="fa-solid fa-location-pin"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <form id="fone">
+        <input type="color" name="bgclr" />
+        <button id="bgbtn"><i class="fa-solid fa-paintbrush"></i></button>
+      </form>
+    </div>
+
+    <!--  -->
+
+    <!--  -->
+
+    <script>
+      h = document.getElementsByName("height")[0];
+      w = document.getElementsByName("width")[0];
+      b = document.getElementsByName("border")[0];
+      r = document.getElementsByName("radius")[0];
+      c = document.getElementsByName("color")[0];
+      m = document.getElementsByName("margin")[0];
+      t = document.getElementsByName("title")[0];
+      tc = document.getElementsByName("txtcolor")[0];
+      create = document.getElementsByTagName("button")[0];
+      con = document.getElementsByClassName("container")[0];
+
+      bgclr = document.getElementsByName("bgclr")[0];
+      btn = document.getElementById("bgbtn");
+
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        con.style.cssText = `background-color:${bgclr.value};`;
+      });
+
+      create.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        box = document.createElement("div");
+        box.style.cssText = `
+                    height: ${h.value}px;
+                       width:  ${w.value}px;
+                       background-color:  ${c.value};
+                       border-radius:  ${r.value}px;
+                       border:${b.value};
+                        margin:${m.value};
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                        flex-wrap:wrap;
+                        overflow:auto;
+                        color:${tc.value};
+                        font-size:1.8em;
+                        text-transform: capitalize;
+                       `;
+
+        box.innerText = t.value;
+        box.classList.add("box1");
+
+        con.appendChild(box);
+      });
+
+      square.onclick = mySquare;
+
+      function mySquare() {
+        b1 = con.children[1];
+        console.log(b1);
+
+        b1.style.cssText = `height: ${h.value}px;
+                       width:  ${w.value}px;
+                       background-color:  ${c.value};
+                       
+                       
+                        margin:${m.value};
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                        flex-wrap:wrap;
+                        overflow:auto;
+                        color:${tc.value};
+                        text-transform: capitalize;
+                        font-size:1.8em;
+                        
+                       `;
+      }
+
+      circle.onclick = myCircle;
+
+      function myCircle() {
+        b1 = con.children[1];
+        console.log(b1);
+
+        b1.style.cssText = `height: ${h.value}px;
+                       width:  ${w.value}px;
+                       background-color:  ${c.value};
+                        
+                        margin:${m.value};
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                        flex-wrap:wrap;
+                        overflow:auto;
+                        font-size:1.8em;
+                        color:${tc.value};
+                        text-transform: capitalize;
+                        clip-path: circle(50% at 50% 50%);
+                       `;
+      }
+      triangle.onclick = myTriangle;
+
+      function myTriangle() {
+        b1 = con.children[1];
+        console.log(b1);
+
+        b1.style.cssText = `height: ${h.value}px;
+                       width:  ${w.value}px;
+                       background-color:  ${c.value};
+                        
+                        margin:${m.value};
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                        flex-wrap:wrap;
+                        overflow:auto;
+                        font-size:1.8em;
+                        color:${tc.value};
+                        text-transform: capitalize;
+                        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+                       `;
+      }
+      rhombus.onclick = myRhombus;
+
+      function myRhombus() {
+        b1 = con.children[1];
+        console.log(b1);
+
+        b1.style.cssText = `height: ${h.value}px;
+                       width:  ${w.value}px;
+                       background-color:  ${c.value};
+                        
+                        margin:${m.value};
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                        flex-wrap:wrap;
+                        overflow:auto;
+                        color:${tc.value};
+                        font-size:1.8em;
+                        text-transform: capitalize;
+                        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+                       `;
+      }
+      star.onclick = myStar;
+
+      function myStar() {
+        b1 = con.children[1];
+        console.log(b1);
+
+        b1.style.cssText = `height: ${h.value}px;
+                       width:  ${w.value}px;
+                       background-color:  ${c.value};
+                        
+                        margin:${m.value};
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                        flex-wrap:wrap;
+                        overflow:auto;
+                        color:${tc.value};
+                        font-size:1.8em;
+                        text-transform: capitalize;
+                        clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+                       `;
+      }
+
+      ellipse.onclick = myEllipse;
+
+      function myEllipse() {
+        b1 = con.children[1];
+        console.log(b1);
+
+        b1.style.cssText = `height: ${h.value}px;
+                       width:  ${w.value}px;
+                       background-color:  ${c.value};
+                        
+                        margin:${m.value};
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                        flex-wrap:wrap;
+                        overflow:auto;
+                        color:${tc.value};
+                        font-size:1.8em;
+                        text-transform: capitalize;
+                      clip-path: ellipse(25% 40% at 50% 50%);
+                       `;
+      }
+    </script>
+  </body>
+</html>
